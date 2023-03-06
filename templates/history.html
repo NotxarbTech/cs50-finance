@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Transaction History
+{% endblock %}
+
+{% block main %}
+<table class="table table-dark table-striped">
+    <thead>
+        <th>Stock Symbol</th>
+        <th>Shares <br><small>(red = bought, green = sold)</small></th>
+        <th>Individual Price</th>
+        <th>Total Value</th>
+        <th>Transacted</th>
+    </thead>
+    <tbody>
+        {% for transaction in transactions %}
+            <tr>
+                <td>{{transaction.symbol}}</td>
+                {% if transaction.amount > 0 %}
+                    <td style="color: red">{{transaction.amount}}</td>
+                {% else %}
+                    <td style="color: green">{{transaction.amount}}</td>
+                {% endif %}
+                <td>{{transaction.price | usd}}</td>
+                <td>{{transaction.sum_amount | usd}}</td>
+                <td>{{transaction.datetime}}</td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

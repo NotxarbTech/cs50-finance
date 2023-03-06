@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Get a Quote
+{% endblock %}
+
+{% block main %}
+    <form method="post">
+        <div class="mb-3">
+            <input type="text" name="symbol" placeholder="Search for a quote" class="form-control mx-auto w-auto" autofocus>
+        </div>
+        <button type="submit" class="btn btn-primary">Search</button>
+    </form>
+{% endblock %}
